@@ -3,7 +3,6 @@ import { motion, useSpring, useMotionValue } from 'motion/react';
 
 export default function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
-  const [isTouch, setIsTouch] = useState(false);
 
   // Use motion values directly for ultra-smooth 60fps+ performance without React re-renders
   const cursorX = useMotionValue(-100);
@@ -17,10 +16,6 @@ export default function CustomCursor() {
   const slowY = useSpring(cursorY, { damping: 40, stiffness: 150, mass: 0.8 });
 
   useEffect(() => {
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    setIsTouch(isTouchDevice);
-    if (isTouchDevice) return;
-
     const handleMouseMove = (e: MouseEvent) => {
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
@@ -53,8 +48,6 @@ export default function CustomCursor() {
     };
   }, [cursorX, cursorY]);
 
-  if (isTouch) return null;
-
   return (
     <>
       {/* Deep Ambient Glow (Slowest) */}
@@ -70,11 +63,10 @@ export default function CustomCursor() {
 
       {/* Hollow Trailing Ring (Medium) */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-50 rounded-full border border-primary/50 mix-blend-screen"
+        className={`fixed top-0 left-0 pointer-events-none z-50 rounded-full mix-blend-screen transition-colors duration-300 ${isHovering ? 'bg-primary border-transparent' : 'border border-primary/50'}`}
         animate={{
-          width: isHovering ? 80 : 40,
-          height: isHovering ? 80 : 40,
-          opacity: isHovering ? 0 : 1, // Fade out when hovering to let the main dot shine
+          width: isHovering ? 12 : 40,
+          height: isHovering ? 12 : 40,
         }}
         transition={{ type: 'spring', damping: 20, stiffness: 300 }}
         style={{
@@ -87,10 +79,11 @@ export default function CustomCursor() {
 
       {/* Main Solid Dot with Difference Blend (Fastest/Instant) */}
       <motion.div
-        className="fixed top-0 left-0 bg-white rounded-full pointer-events-none z-50 mix-blend-difference"
+        className="fixed top-0 left-0 bg-white pointer-events-none z-50 mix-blend-difference"
         animate={{
-          width: isHovering ? 80 : 12,
-          height: isHovering ? 80 : 12,
+          width: isHovering ? 72 : 12,
+          height: isHovering ? 72 : 12,
+          borderRadius: isHovering ? '24px' : '50%',
         }}
         transition={{ type: 'spring', damping: 25, stiffness: 300, mass: 0.5 }}
         style={{

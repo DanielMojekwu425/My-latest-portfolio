@@ -35,7 +35,10 @@
 
   body {
     @apply bg-background text-foreground font-sans selection:bg-primary/30 selection:text-primary antialiased;
-    cursor: none;
+  }
+  
+  * {
+    cursor: none !important;
   }
 
   h1, h2, h3, h4, h5, h6 {
