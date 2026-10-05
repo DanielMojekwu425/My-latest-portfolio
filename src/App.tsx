@@ -112,6 +112,9 @@ export default function App() {
                   I don't just write code; I design systems. I don't just build interfaces; I craft experiences. 
                   Whether it's a high-performance backend or a fluid 3D interaction, I bring a level of precision and soul that sets my work apart.
                 </p>
+                <p>
+                  I also founded Deemvmedia, a tech and media company focused on creating digital solutions to audience needs and helping brands and communities thrive online through creative advertising and digital platforms. You can check out our website in the projects section to see what we've built and the services we have to offer. Feel free to reach out to discuss how we can create something extraordinary together. 
+                </p>
               </div>
 
               <div className="flex flex-wrap gap-4">

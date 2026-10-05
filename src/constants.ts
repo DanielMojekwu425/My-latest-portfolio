@@ -2,7 +2,7 @@ import { Github, Linkedin, Twitter, Globe } from 'lucide-react';
 import { Project, Social } from './types';
 
 import imgArcade from './assets/project-arcade.jpg';
-import imgDeemvmedia from './assets/project-deemvmedia.jpg';
+import imgDeemvmedia from './assets/project-deemvmedia.jpeg';
 import imgHostel from './assets/project-hostel2harvest.jpg';
 import imgNectar from './assets/project-nectar.png';
 import imgRealEstate from './assets/project-6.jpg';
@@ -24,7 +24,7 @@ export const PROJECTS: Project[] = [
     id: 2,
     name: "Deemvmedia Website",
     image: imgDeemvmedia,
-    link: "https://danymojekwu.github.io/Deemvmedia-Website/deemvmedia%20website/index.html",
+    link: "https://deemvmedia.com/",
     description: "Creative agency website design",
     tags: ["Web Design", "UI/UX", "Branding"]
   },
